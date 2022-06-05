@@ -36,7 +36,7 @@ export default async function naverTranslate(text: string) {
 			config
 		);
 	
-		return data.message.result.translatedText;
+		return data.message.result.translatedText.toLowerCase();
 	} catch (error) {
 		return '';
 	}

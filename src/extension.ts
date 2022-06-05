@@ -1,5 +1,5 @@
 import { commands, ExtensionContext, Range, window } from 'vscode';
-import naverTranslate from './lib/naverTranslate';
+import { translate } from './lib';
 
 export function activate(context: ExtensionContext) {
 	const disposable = commands.registerCommand('kortoeng.kortoeng', async () => {
@@ -18,8 +18,8 @@ export function activate(context: ExtensionContext) {
 			return;
 		}
 
-		const translatedText = await naverTranslate(highlightedText);
-		const pickedItem = await window.showQuickPick([translatedText]);
+		const translatedTexts = await translate(highlightedText);
+		const pickedItem = await window.showQuickPick(translatedTexts);
 		if (!pickedItem) {
 			return;
 		}
