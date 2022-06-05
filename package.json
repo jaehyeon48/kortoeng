@@ -2,7 +2,7 @@
 	"name": "kortoeng",
 	"displayName": "korToEng",
 	"description": "Translates korean to english",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"publisher": "jaehyeon48",
 	"repository": "https://github.com/jaehyeon48/kortoeng",
 	"engines": {
