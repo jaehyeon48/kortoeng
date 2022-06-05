@@ -1,14 +1,21 @@
 import kakaoTranslate from './kakaoTranslate';
 import naverTranslate from './naverTranslate';
+import { convertToCamelCase } from './casing';
 
 export default async function translate(text: string) {
 	const kakaoTranslated = await kakaoTranslate(text);
 	const naverTranslated = await naverTranslate(text);
-	const result = removeDuplicatedWords(
+	const originalTexts = removeDuplicatedWords(
 		[kakaoTranslated, naverTranslated].map(removeSpecialKeywords)
 	);
 
-	return result;
+	return [
+		...convertToCamelCase(originalTexts),
+		...[...originalTexts].map(word => ({
+			label: word,
+			detail: '원본'
+		}))
+	];
 }
 
 function removeDuplicatedWords(texts: string[]) {

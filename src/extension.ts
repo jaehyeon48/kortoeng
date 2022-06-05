@@ -23,7 +23,7 @@ export function activate(context: ExtensionContext) {
 		if (!pickedItem) {
 			return;
 		}
-		editor.edit(edit => edit.replace(range, pickedItem));
+		editor.edit(edit => edit.replace(range, pickedItem.label));
 	});
 
 	context.subscriptions.push(disposable);
