@@ -1,16 +1,16 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { NAVER_CLIENT_ID, NAVER_CLIENT_SECRET } from '../configs';
 
-interface TranslateResult {
+interface NaverTranslateResult {
 	srcLangType: string;
 	tarLangType: string;
 	translatedText: string;
 }
 
-interface TranslateResponse {
+interface NaverTranslateResponse {
 	data: {
 		message: {
-			result: TranslateResult;
+			result: NaverTranslateResult;
 		};
 	};
 }
@@ -30,7 +30,7 @@ export default async function naverTranslate(text: string) {
 			}
 		};
 	
-		const { data }: TranslateResponse = await axios.post(
+		const { data }: NaverTranslateResponse = await axios.post(
 			'https://openapi.naver.com/v1/papago/n2mt',
 			reqBody,
 			config
