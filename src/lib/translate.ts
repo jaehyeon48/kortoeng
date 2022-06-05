@@ -1,6 +1,11 @@
 import kakaoTranslate from './kakaoTranslate';
 import naverTranslate from './naverTranslate';
-import { convertToCamelCase, convertToKebabCase, convertToSnakeCase } from './casing';
+import {
+	convertToCamelCase,
+	convertToKebabCase,
+	convertToPascalCase,
+	convertToSnakeCase
+} from './casing';
 
 export default async function translate(text: string) {
 	const kakaoTranslated = await kakaoTranslate(text);
@@ -12,7 +17,8 @@ export default async function translate(text: string) {
 	return [
 		...convertToCamelCase(originalTexts),
 		...convertToSnakeCase(originalTexts),
-    ...convertToKebabCase(originalTexts),
+		...convertToKebabCase(originalTexts),
+    ...convertToPascalCase(originalTexts),
 		...[...originalTexts].map(word => ({
 			label: word,
 			detail: '원본'

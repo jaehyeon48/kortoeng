@@ -33,3 +33,19 @@ export function convertToKebabCase(texts: string[]): QuickPickItem[] {
 			detail: 'kebab-case'
 		}));
 }
+
+export function convertToPascalCase(texts: string[]): QuickPickItem[] {
+	function makePascalCase(word: string[]) {
+		let result = '';
+		for (let i = 0; i < word.length; i++) {
+			result += word[i].replace(/^./, match => match.toUpperCase());
+		}
+
+		return {
+			label: result,
+			detail: 'PascalCase'
+		};
+	}
+
+	return texts.map(word => word.split(' ')).map(makePascalCase);
+}
