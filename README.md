@@ -17,6 +17,8 @@
 
 ## Release Note
 
+- v0.4.0
+  - `camelCase`, `snake_case`, `kebab-case`, `PascalCase` 형태로 변환된 번역 결과 제공
 - v0.3.0
   - 카카오 번역 API를 사용한 번역 결과 제공
 - v0.2.0
