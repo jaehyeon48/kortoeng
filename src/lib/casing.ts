@@ -24,3 +24,12 @@ export function convertToSnakeCase(texts: string[]): QuickPickItem[] {
 			detail: 'snake_case'
 		}));
 }
+
+export function convertToKebabCase(texts: string[]): QuickPickItem[] {
+	return texts
+		.map(word => word.replace(/ /g, '-'))
+		.map(word => ({
+			label: word,
+			detail: 'kebab-case'
+		}));
+}
