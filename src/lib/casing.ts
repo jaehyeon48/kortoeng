@@ -15,3 +15,12 @@ export function convertToCamelCase(texts: string[]): QuickPickItem[] {
 
 	return texts.map(word => word.split(' ')).map(makeCamelCase);
 }
+
+export function convertToSnakeCase(texts: string[]): QuickPickItem[] {
+	return texts
+		.map(word => word.replace(/ /g, '_'))
+		.map(word => ({
+			label: word,
+			detail: 'snake_case'
+		}));
+}
