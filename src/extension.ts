@@ -14,6 +14,10 @@ export function activate(context: ExtensionContext) {
 			if (highlightedText.trim() === '') {
 				return;
 			}
+			if (highlightedText.length > 5000) {
+				window.showErrorMessage('최대 5,000자 까지 번역할 수 있습니다.');
+				return;
+			}
 			const translatedText = await translate(highlightedText);
 			const pickedItem = await window.showQuickPick([translatedText]);
 			if (!pickedItem) {
